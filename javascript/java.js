@@ -118,23 +118,27 @@ function menu() {
     case "1":
       mostrarPlaylist();
       console.log("...");
-      setTimeout(menu, 300);
+       alert("Volviendo al menú...");
+      menu();
       return;
 
     case "2":
       reproducirCancion();
       console.log("...");
-      setTimeout(menu, 300);
+      alert("Volviendo al menú...");
+      menu();
       return;
 
     case "3":
       siguienteCancion();
-      setTimeout(menu, 300);
+       alert("Volviendo al menú...");
+      menu();
       return;
 
     case "4":
       anteriorCancion();
-      setTimeout(menu, 300);
+       alert("Volviendo al menú...");
+      menu();
       return;
 
     case "5":
@@ -143,21 +147,24 @@ function menu() {
       const d = prompt("Duración (mm:ss):");
       agregarCancion(t, a, d);
       console.log("...");
-      setTimeout(menu, 300);
+       alert("Volviendo al menú...");
+      menu();
       return;
 
     case "6":
       const buscar = prompt("Título a buscar:");
       buscarCancion(buscar);
       console.log("...");
-      setTimeout(menu, 300);
+       alert("Volviendo al menú...");
+      menu();
       return;
 
     case "7":
       const num = parseInt(prompt("Número de canción:"));
       irACancion(num);
       console.log("...");
-      setTimeout(menu, 300);
+      alert("Volviendo al menú...");
+      menu();
       return;
 
     case "0":
@@ -167,7 +174,8 @@ function menu() {
     default:
       alert("Opción no válida.");
       console.log("...");
-      setTimeout(menu, 300);
+       alert("Volviendo al menú...");
+      menu();
       return;
   }
 }
@@ -176,9 +184,6 @@ function menu() {
 // Iniciar menú
 window.onload = () => {
   console.log("Página cargada");
-  setTimeout(() => {
-    menu();
-  }, 100); 
+  menu();
 };
-
 
