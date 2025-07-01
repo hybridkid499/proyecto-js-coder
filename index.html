@@ -3,13 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <title>manzanares-proyecto-coder</title>
+  <link rel="stylesheet" href="css/style.css">
   <script defer src="javascript/main.js" ></script>
 </head>
 
 
 <body>
 
-    <h1 style="text-align: center; font-family: sans-serif;">Proyecto Playlist</h1>
+  <h1 style="text-align: center; font-family: sans-serif;">Proyecto Playlist</h1>
+
+
+  <!--agregue botones genericos ahora. en el css no quise modificar mucho porque tuve algunos problemas con bootstrap, creo que al momento de modificar ese codigo de bootstrap no me quedaba del todo funcional-->
+  <!--era como que se me rompia ciertas partes pero creo que porque deje esa parte para despues de crear el js con el css entonces mejor deje la version original para que el css no entrara mucho en conflicto con bootstrap-->
+  
+
+  <div id="menu">
+
+    <button id="verPlaylist">Ver playlist</button>
+    <button id="reproducir">Reproducir canción actual</button>
+    <button id="siguiente">Siguiente</button>
+    <button id="anterior">Anterior</button>
+  </div>
+
+
+
+
+  <hr>
+
+
+  <!-- agregar cancion -->
+  <h2>Agregar nueva canción</h2>
+  <input type="text" id="inputTitulo" placeholder="Título">
+  <input type="text" id="inputArtista" placeholder="Artista">
+  <input type="text" id="inputDuracion" placeholder="Duración (mm:ss)">
+  <button id="btnAgregar">Agregar</button>
+
+  <hr>
+  
+  <!-- buscar cancion -->
+  <h2>Buscar canción</h2>
+  <input type="text" id="inputBuscar" placeholder="Título a buscar">
+  <button id="btnBuscar">Buscar</button>
+
+  <hr>
+
+
+  <!-- cancion por numero -->
+  <h2>Ir a canción por número</h2>
+  <input type="number" id="inputNumero" min="1" placeholder="Número de canción">
+  <button id="btnIrA">Ir</button>
+
+  <hr>
+
+  <!-- interaccion de borrado-->
+  <h2>Borrar toda la playlist</h2>
+
+<button id="btnBorrar">Borrar playlist</button>
+<button id="btnConfirmarBorrado" class="oculto">Confirmar borrado</button>
+
+  <div id="info"></div>
 
 </body>
+
+
 </html>
