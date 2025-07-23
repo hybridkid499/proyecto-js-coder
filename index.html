@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>manzanares-proyecto-coder</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+  <script defer src="javascript/playlist-funciones.js"></script>
   <script defer src="javascript/main.js" ></script>
 </head>
 
@@ -41,9 +43,10 @@
   <hr>
   
   <!-- buscar cancion -->
-  <h2>Buscar canción</h2>
-  <input type="text" id="inputBuscar" placeholder="Título a buscar">
-  <button id="btnBuscar">Buscar</button>
+   <h2>Buscar canción</h2>
+  <input type="text" id="inputBuscarTitulo" placeholder="Título de la canción">
+<input type="text" id="inputBuscarArtista" placeholder="Artista de la canción">
+<button id="btnBuscar">Buscar canción</button>
 
   <hr>
 
@@ -54,6 +57,32 @@
   <button id="btnIrA">Ir</button>
 
   <hr>
+
+<!-- editar cancion -->
+<h2>Editar canción</h2>
+<input type="text" id="inputEditarBuscar" placeholder="Título de la canción a editar">
+<input type="text" id="inputEditarArtistaOriginal" placeholder="Artista original de la canción">
+<button id="btnEditar">Editar canción</button>
+
+<!-- estos campos aparecen solo si se encuentra la cancion -->
+<div id="seccionEditar" class="oculto">
+  <input type="text" id="inputEditarTitulo" placeholder="Nuevo título">
+  <input type="text" id="inputEditarArtista" placeholder="Nuevo artista">
+  <input type="text" id="inputEditarDuracion" placeholder="Nueva duración (mm:ss)">
+  <button id="btnEditarConfirmar">Confirmar edición</button>
+</div>
+
+<hr>
+
+
+
+ <h2>Eliminar canción</h2>
+<input type="text" id="inputEliminarTitulo" placeholder="Título de la canción">
+<input type="text" id="inputEliminarArtista" placeholder="Artista de la canción">
+<button id="btnEliminarCancion">Eliminar canción</button>
+
+
+<hr>
 
   <!-- interaccion de borrado-->
   <h2>Borrar toda la playlist</h2>
