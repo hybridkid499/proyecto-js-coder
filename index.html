@@ -1,98 +1,97 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>manzanares-proyecto-coder</title>
-  <link rel="stylesheet" href="css/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
-  <script defer src="javascript/playlist-funciones.js"></script>
-  <script defer src="javascript/main.js" ></script>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Playlist App</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- type="module" habilita ES6 imports. Carga diferida por defecto. -->
+    <script type="module" src="javascript/main.js"></script>
+  </head>
 
+  <body>
+    <header>
+      <h1>Playlist App</h1>
+    </header>
 
-<body>
+    <main>
+      <!-- ── Controles de reproducción ─────────────────────────── -->
+      <section id="controles" aria-label="Controles de reproducción">
+        <button id="verPlaylist">Ver playlist</button>
+        <button id="reproducir">▶ Reproducir actual</button>
+        <button id="anterior">← Anterior</button>
+        <button id="siguiente">Siguiente →</button>
+      </section>
 
-  <h1 style="text-align: center; font-family: sans-serif;">Proyecto Playlist</h1>
+      <hr />
 
+      <!-- ── Agregar canción ────────────────────────────────────── -->
+      <section aria-label="Agregar canción">
+        <h2>Agregar canción</h2>
+        <input type="text" id="inputTitulo" placeholder="Título" autocomplete="off" />
+        <input type="text" id="inputArtista" placeholder="Artista" autocomplete="off" />
+        <input type="text" id="inputDuracion" placeholder="Duración (mm:ss)" autocomplete="off" />
+        <button id="btnAgregar">Agregar</button>
+      </section>
 
-  <!--agregue botones genericos ahora. en el css no quise modificar mucho porque tuve algunos problemas con bootstrap, creo que al momento de modificar ese codigo de bootstrap no me quedaba del todo funcional-->
-  <!--era como que se me rompia ciertas partes pero creo que porque deje esa parte para despues de crear el js con el css entonces mejor deje la version original para que el css no entrara mucho en conflicto con bootstrap-->
-  
+      <hr />
 
-  <div id="menu">
+      <!-- ── Buscar canción ─────────────────────────────────────── -->
+      <section aria-label="Buscar canción">
+        <h2>Buscar canción</h2>
+        <input type="text" id="inputBuscarTitulo" placeholder="Título" autocomplete="off" />
+        <input type="text" id="inputBuscarArtista" placeholder="Artista" autocomplete="off" />
+        <button id="btnBuscar">Buscar</button>
+      </section>
 
-    <button id="verPlaylist">Ver playlist</button>
-    <button id="reproducir">Reproducir canción actual</button>
-    <button id="siguiente">Siguiente</button>
-    <button id="anterior">Anterior</button>
-  </div>
+      <hr />
 
+      <!-- ── Ir a canción por número ────────────────────────────── -->
+      <section aria-label="Ir a canción por número">
+        <h2>Ir a canción por número</h2>
+        <input type="number" id="inputNumero" min="1" placeholder="Número de canción" />
+        <button id="btnIrA">Ir</button>
+      </section>
 
+      <hr />
 
+      <!-- ── Editar canción ─────────────────────────────────────── -->
+      <section aria-label="Editar canción">
+        <h2>Editar canción</h2>
+        <input type="text" id="inputEditarBuscar" placeholder="Título de la canción a editar" autocomplete="off" />
+        <input type="text" id="inputEditarArtistaOriginal" placeholder="Artista original" autocomplete="off" />
+        <button id="btnEditar">Buscar para editar</button>
 
-  <hr>
+        <div id="seccionEditar" class="oculto">
+          <input type="text" id="inputEditarTitulo" placeholder="Nuevo título" autocomplete="off" />
+          <input type="text" id="inputEditarArtista" placeholder="Nuevo artista" autocomplete="off" />
+          <input type="text" id="inputEditarDuracion" placeholder="Nueva duración (mm:ss)" autocomplete="off" />
+          <button id="btnEditarConfirmar">Confirmar edición</button>
+        </div>
+      </section>
 
+      <hr />
 
-  <!-- agregar cancion -->
-  <h2>Agregar nueva canción</h2>
-  <input type="text" id="inputTitulo" placeholder="Título">
-  <input type="text" id="inputArtista" placeholder="Artista">
-  <input type="text" id="inputDuracion" placeholder="Duración (mm:ss)">
-  <button id="btnAgregar">Agregar</button>
+      <!-- ── Eliminar canción ───────────────────────────────────── -->
+      <section aria-label="Eliminar canción">
+        <h2>Eliminar canción</h2>
+        <input type="text" id="inputEliminarTitulo" placeholder="Título" autocomplete="off" />
+        <input type="text" id="inputEliminarArtista" placeholder="Artista" autocomplete="off" />
+        <button id="btnEliminarCancion">Eliminar</button>
+      </section>
 
-  <hr>
-  
-  <!-- buscar cancion -->
-   <h2>Buscar canción</h2>
-  <input type="text" id="inputBuscarTitulo" placeholder="Título de la canción">
-<input type="text" id="inputBuscarArtista" placeholder="Artista de la canción">
-<button id="btnBuscar">Buscar canción</button>
+      <hr />
 
-  <hr>
+      <!-- ── Borrar playlist ────────────────────────────────────── -->
+      <section aria-label="Borrar playlist">
+        <h2>Borrar toda la playlist</h2>
+        <button id="btnBorrar">Borrar playlist</button>
+        <button id="btnConfirmarBorrado" class="oculto btn-peligro">Confirmar borrado</button>
+      </section>
 
-
-  <!-- cancion por numero -->
-  <h2>Ir a canción por número</h2>
-  <input type="number" id="inputNumero" min="1" placeholder="Número de canción">
-  <button id="btnIrA">Ir</button>
-
-  <hr>
-
-<!-- editar cancion -->
-<h2>Editar canción</h2>
-<input type="text" id="inputEditarBuscar" placeholder="Título de la canción a editar">
-<input type="text" id="inputEditarArtistaOriginal" placeholder="Artista original de la canción">
-<button id="btnEditar">Editar canción</button>
-
-<!-- estos campos aparecen solo si se encuentra la cancion -->
-<div id="seccionEditar" class="oculto">
-  <input type="text" id="inputEditarTitulo" placeholder="Nuevo título">
-  <input type="text" id="inputEditarArtista" placeholder="Nuevo artista">
-  <input type="text" id="inputEditarDuracion" placeholder="Nueva duración (mm:ss)">
-  <button id="btnEditarConfirmar">Confirmar edición</button>
-</div>
-
-<hr>
-
-
-
- <h2>Eliminar canción</h2>
-<input type="text" id="inputEliminarTitulo" placeholder="Título de la canción">
-<input type="text" id="inputEliminarArtista" placeholder="Artista de la canción">
-<button id="btnEliminarCancion">Eliminar canción</button>
-
-
-<hr>
-
-  <!-- interaccion de borrado-->
-  <h2>Borrar toda la playlist</h2>
-
-<button id="btnBorrar">Borrar playlist</button>
-<button id="btnConfirmarBorrado" class="oculto">Confirmar borrado</button>
-
-  <div id="info"></div>
-
-</body>
-
-
+      <!-- ── Área de información / resultados ───────────────────── -->
+      <div id="info" aria-live="polite"></div>
+    </main>
+  </body>
 </html>

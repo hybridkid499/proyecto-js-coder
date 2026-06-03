@@ -1,68 +1,290 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color:   #f9f9f7;
-  margin: 20px;
+/* ── Reset mínimo ─────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
   padding: 0;
-  color:  #111;
 }
 
-h1, h2 {
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f9f9f7;
+  color: #111;
+  padding: 20px;
+}
+
+header {
   text-align: center;
+  margin-bottom: 24px;
+}
+
+h1 {
+  font-size: 2rem;
   color: #222;
 }
 
-#menu, #info, form, hr, h2, input, button {
-  margin: 15px auto;
-  max-width: 600px;
-  display: block;
+h2 {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 10px;
   text-align: center;
 }
 
-button {
-  padding: 8px 15px;
-  margin: 5px;
-  background-color: #333;
-  color: white;
+main {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+hr {
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  border-top: 1px solid #ddd;
+  margin: 24px 0;
 }
 
-.oculto {
-  display: none;
+/* ── Secciones ────────────────────────────────────────────────────────────── */
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
 
-button:hover {
-  background-color:  #111;
-}
-
-input[type="text"], input[type="number"] {
-  padding: 8px;
-  margin: 5px;
-  width: 60%;
+/* ── Inputs ───────────────────────────────────────────────────────────────── */
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  max-width: 400px;
+  padding: 8px 12px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-input[type="text"], input[type="number"], button {
-  display: block;
-  margin: 10px auto;
+  border-radius: 6px;
+  font-size: 0.95rem;
   text-align: center;
 }
 
 input::placeholder {
-  text-align: center;
+  color: #999;
 }
 
+input:focus {
+  outline: 2px solid #555;
+  outline-offset: 1px;
+}
+
+/* ── Botones ──────────────────────────────────────────────────────────────── */
+button {
+  padding: 8px 18px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #111;
+}
+
+button:focus-visible {
+  outline: 2px solid #555;
+  outline-offset: 2px;
+}
+
+.btn-peligro {
+  background-color: #c0392b;
+}
+
+.btn-peligro:hover {
+  background-color: #922b21;
+}
+
+/* ── Oculto ───────────────────────────────────────────────────────────────── */
+.oculto {
+  display: none;
+}
+
+/* ── Sección editar (div dinámico dentro de section) ─────────────────────── */
+#seccionEditar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+}
+
+#seccionEditar.oculto {
+  display: none;
+}
+
+/* ── Área de info ─────────────────────────────────────────────────────────── */
 #info {
   background-color: white;
-  padding: 15px;
   border-radius: 10px;
-  margin-top: 20px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  padding: 16px;
+  margin-top: 24px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
+  min-height: 60px;
 }
 
+/* ── Playlist ─────────────────────────────────────────────────────────────── */
+.playlist-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
 
-#btnConfirmarBorrado {
+.cancion-item {
+  display: grid;
+  grid-template-columns: 28px 1fr 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background-color: #f4f4f2;
+  font-size: 0.9rem;
+}
+
+.cancion-numero {
+  font-weight: 700;
+  color: #888;
+  text-align: right;
+}
+
+.cancion-titulo {
+  font-weight: 600;
+}
+
+.cancion-artista {
+  color: #555;
+}
+
+.cancion-duracion {
+  color: #888;
+  font-variant-numeric: tabular-nums;
+}
+
+.playlist-vacia {
   text-align: center;
+  color: #999;
+  font-style: italic;
+}
+
+/* ── Reproduciendo ────────────────────────────────────────────────────────── */
+.reproduciendo {
+  text-align: center;
+  padding: 8px 0;
+}
+
+.reproduciendo-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #888;
+  margin-bottom: 6px;
+}
+
+.reproduciendo-titulo {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.reproduciendo-artista {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 2px;
+}
+
+.reproduciendo-duracion {
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+.cancion-larga {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: #c0392b;
+}
+
+/* ── Resultado de búsqueda ────────────────────────────────────────────────── */
+.resultado-busqueda {
+  text-align: center;
+}
+
+.resultado-label {
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+/* ── SweetAlert2 botones custom ───────────────────────────────────────────── */
+.swal-btn {
+  padding: 8px 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin: 4px;
+}
+
+.swal-btn:hover {
+  background-color: #111;
+}
+
+.swal-btn--cancel {
+  background-color: #999;
+}
+
+.swal-btn--cancel:hover {
+  background-color: #777;
+}
+
+/* ── Drag & Drop ──────────────────────────────────────────────────────────── */
+.drag-handle {
+  color: #bbb;
+  font-size: 1.1rem;
+  cursor: grab;
+  padding: 0 4px;
+  user-select: none;
+  transition: color 0.15s ease;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+.cancion-item {
+  /* Extendemos el grid para incluir el handle */
+  grid-template-columns: 20px 28px 1fr 1fr auto;
+  cursor: default;
+  transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.15s ease;
+}
+
+.cancion-item:hover .drag-handle {
+  color: #555;
+}
+
+/* Estado: elemento siendo arrastrado */
+.cancion-item.dragging {
+  opacity: 0.4;
+  transform: scale(0.98);
+}
+
+/* Las líneas indican exactamente dónde se va a insertar la canción */
+.cancion-item.drop-arriba {
+  border-top: 2px solid #333;
+}
+
+.cancion-item.drop-abajo {
+  border-bottom: 2px solid #333;
 }
